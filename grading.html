@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <title>Document</title>
+    <style>
+        b{
+            font-size: 35px;
+            font-family: calibri;
+            color: blue;
+        }
+        span{
+            font-size: 33px;
+            font-family: cursive;
+            color: darkred;
+        }
+    </style>
+</head>
+ 
+<body>
+    <!-- 
+        Grading System
+        1. Name of the student
+        2. Roll Number
+        3. Marks obtained in 5 subjects
+        4. Button for showing the report card
+     -->
+ 
+    <h1>St. Patrick's Catholic Primary Academy</h1>
+    <div id="report_card">
+ 
+    </div> <br>
+ 
+    <div id="marks_obtained">
+        
+            <input type="text" id="student" placeholder="ENTER FULLNAME" required> <br>
+            <input type="number" id="cls" placeholder="ENTER CLASS" required> <br> <br>
+            <input type="number" id="sub-1" placeholder="HISTORY"> <br>
+            <input type="number" id="sub-2" placeholder="MATHEMATICS"> <br>
+            <input type="number" id="sub-3" placeholder="SCIENCE"> <br>
+            <input type="number" id="sub-4" placeholder="ENGLISH"> <br>
+            <input type="number" id="sub-5" placeholder="GEOGRAPHY"> <br>
+ 
+            <button id="btn-1" onclick="showReportCard()">Show Report Card</button>
+        
+    </div>
+    <button id="prt" onclick="lastFunc()">Print Report Card</button>
+ 
+    <script>
+        /*
+          1. Calculate the total marks
+          2. Calculate the percentage
+          3. Calculate the grade
+          4. Show the report card
+        */
+        function showReportCard() {
+            var student = document.getElementById("student").value
+            var cls = document.getElementById("cls").value
+            var s1 = document.getElementById("sub-1").value
+            var s2 = document.getElementById("sub-2").value
+            var s3 = document.getElementById("sub-3").value
+            var s4 = document.getElementById("sub-4").value
+            var s5 = document.getElementById("sub-5").value
+ 
+            if (s1 < 0 || s1 > 100 || s2 < 0 || s2 > 100 || s3 < 0 || s3 > 100 || s4 < 0 || s4 > 100 || s5 < 0 || s5 > 100) {
+                alert("Error!!! Enter the marks again properly.")
+            }
+            else {
+                var total = s1 + "+" + s2 + "+" + s3 + "+" + s4 + "+" + s5
+                // eval()
+                var total_marks = eval(total)
+                // alert(total_marks)
+ 
+                var percentage = total_marks / 5
+                // alert(percentage + "%")
+ 
+                /*
+                    Grading pattern
+                     1. percentage>=91 and percentage<=100    ->  A+
+                     2. percentage>=81 and percentage<91      ->  A
+                     3. percentage>=71 and percentage<81      ->  B+
+                     4. percentage>=61 and percentage<71      ->  B
+                     5. percentage>=51 and percentage<61      ->  C
+                     6. percentage>=41 and percentage<51      ->  D
+                     7. percentage>=33 and percentage<41      ->  E
+                     8. percentage>=0 and percentage<33       ->  F(Fail)
+                */
+                var grade
+                if (percentage >= 91 && percentage <= 100) {
+                    grade = "A+"
+                }
+                else if (percentage >= 81 && percentage < 91) {
+                    grade = "A"
+                }
+                else if (percentage >= 71 && percentage < 81) {
+                    grade = "B+"
+                }
+                else if (percentage >= 61 && percentage < 71) {
+                    grade = "B"
+                }
+                else if (percentage >= 51 && percentage < 61) {
+                    grade = "C"
+                }
+                else if (percentage >= 41 && percentage < 51) {
+                    grade = "D"
+                }
+                else if (percentage >= 33 && percentage < 41) {
+                    grade = "E"
+                }
+                else {
+                    grade = "Fail"
+                }
+                // alert("Percentage: " + percentage + "%, Grade: " + grade)
+                document.getElementById("report_card").innerHTML =
+                    "<b>Name of the Student: </b><span>" + student + "</span><br>" +
+                    "<b>Class: </b><span>" + cls + "</span><br><hr><br>" +
+                    "<b>History Marks: </b><span>" + s1 + "</span><br>" +
+                    "<b>Mathematics Marks: </b><span>" + s2 + "</span><br>" +
+                    "<b>Science Marks: </b><span>" + s3 + "</span><br>" +
+                    "<b>English Marks: </b><span>" + s4 + "</span><br>" +
+                    "<b>Geograpgy Marks: </b><span>" + s5 + "</span><br><hr><br>" +
+                    "<b>Total Marks Obtained: </b><span>"+total_marks+"/500</span><br>"+
+                    "<b>Percentage: </b><span>"+percentage+"%</span><br>"+
+                    "<b>Grade: </b><span>"+grade+"</span><br>"
+                
+                document.getElementById("marks_obtained").style.visibility = "hidden"
+            }
+        }
+        function lastFunc(){
+            document.getElementById("prt").style.visibility = "hidden"
+            window.print()
+        }
+    </script>
+</body>
+ 
+</html>
