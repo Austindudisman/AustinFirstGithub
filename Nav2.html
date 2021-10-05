@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0%;
+        }
+        .topnav a{
+            text-decoration: none;
+            font-size: 24px;
+            font-family: calibri;
+            padding-left: 20px;
+            padding-right: 20px;
+            color: cornsilk;
+        }
+        .topnav a:hover{
+            background-color: blue;
+            padding: 15px 20px 15px 20px;
+        }
+        .topnav{
+            background-color: rgb(21, 2, 44);
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+       1. Home
+       2. Dashboard
+       3. About
+       4. Pricing
+       5. Resources
+       6. Contact
+    -->
+    <div class="topnav">
+        <a href="#" id="a-1" onclick="changeColor('a-1','a-2','a-3','a-4','a-5','a-6')">Home</a>
+        <a href="#" id="a-2" onclick="changeColor('a-2','a-3','a-4','a-5','a-6','a-1')">Dashboard</a>
+        <a href="#" id="a-3" onclick="changeColor('a-3','a-4','a-5','a-6','a-1','a-2')">About</a>
+        <a href="#" id="a-4" onclick="changeColor('a-4','a-5','a-6','a-1','a-2','a-3')">Pricing</a>
+        <a href="#" id="a-5" onclick="changeColor('a-5','a-6','a-1','a-2','a-3','a-4')">Resources</a>
+        <a href="#" id="a-6" onclick="changeColor('a-6','a-1','a-2','a-3','a-4','a-5')">Contact</a>
+    </div>
+    <script>
+        function changeColor(id_1,id_2,id_3,id_4,id_5,id_6){
+            document.getElementById(id_1).style.backgroundColor = "red"
+            document.getElementById(id_1).style.paddingBottom = "15px"
+            document.getElementById(id_1).style.paddingTop = "15px"
+            document.getElementById(id_2).style.backgroundColor = "rgb(21, 2, 44)"
+            document.getElementById(id_3).style.backgroundColor = "rgb(21, 2, 44)"
+            document.getElementById(id_4).style.backgroundColor = "rgb(21, 2, 44)"
+            document.getElementById(id_5).style.backgroundColor = "rgb(21, 2, 44)"
+            document.getElementById(id_6).style.backgroundColor = "rgb(21, 2, 44)"
+        }
+    </script>
+</body>
+</html>
+ 
+
+
